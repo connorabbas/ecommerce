@@ -21,7 +21,8 @@
                 "streetsidesoftware.code-spell-checker",
                 "shd101wyy.markdown-preview-enhanced",
                 "formulahendry.auto-rename-tag",
-                "pmneo.tsimporter"
+                "pmneo.tsimporter",
+                "shufo.vscode-blade-formatter"
             ],
             "settings": {}
         }

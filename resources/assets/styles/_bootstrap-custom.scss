@@ -1,0 +1,7 @@
+.accordion-button:not(.collapsed) {
+    font-weight: bold;
+}
+.accordion-button:hover {
+    background-color: $light-bg-subtle;
+    color: $primary-text-emphasis;
+}
