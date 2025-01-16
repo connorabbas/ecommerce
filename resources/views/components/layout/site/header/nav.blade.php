@@ -180,8 +180,10 @@
                             <li>
                                 <a
                                     class="dropdown-item"
-                                    href="#"
-                                >Products</a>
+                                    href="{{ route('products.search') }}"
+                                >
+                                    Products
+                                </a>
                             </li>
                         </ul>
                     </li>
