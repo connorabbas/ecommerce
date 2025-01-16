@@ -1,5 +1,5 @@
 services:
-    laravel.test:
+    ecommerce:
         build:
             context: './vendor/laravel/sail/runtimes/8.4'
             dockerfile: Dockerfile
@@ -9,7 +9,7 @@ services:
         extra_hosts:
             - 'host.docker.internal:host-gateway'
         ports:
-            - '${APP_PORT:-80}:80'
+            - '${APP_PORT:-8000}:80'
             - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
         environment:
             WWWUSER: '${WWWUSER}'
@@ -19,8 +19,13 @@ services:
             IGNITION_LOCAL_SITES_PATH: '${PWD}'
         volumes:
             - '.:/var/www/html'
+        labels:
+            - "traefik.enable=true"
+            - "traefik.http.routers.ecommerce.rule=Host(`ecommerce.localhost`)"
+            - "traefik.http.services.ecommerce.loadbalancer.server.port=80"
         networks:
             - sail
+            - proxy
         depends_on:
             - pgsql
             - meilisearch
@@ -57,8 +62,13 @@ services:
             MEILI_NO_ANALYTICS: '${MEILISEARCH_NO_ANALYTICS:-false}'
         volumes:
             - 'sail-meilisearch:/meili_data'
+        labels:
+            - "traefik.enable=true"
+            - "traefik.http.routers.meilisearch.rule=Host(`meilisearch.ecommerce.localhost`)"
+            - 'traefik.http.services.meilisearch.loadbalancer.server.port=7700'
         networks:
             - sail
+            - proxy
         healthcheck:
             test:
                 - CMD
@@ -71,6 +81,9 @@ services:
 networks:
     sail:
         driver: bridge
+    proxy:
+        name: traefik_network
+        external: true
 volumes:
     sail-pgsql:
         driver: local
