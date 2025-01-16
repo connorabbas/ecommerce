@@ -9,7 +9,7 @@ services:
         extra_hosts:
             - 'host.docker.internal:host-gateway'
         ports:
-            - '${APP_PORT:-80}:80'
+            - '${APP_PORT:-8000}:80'
             - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
         environment:
             WWWUSER: '${WWWUSER}'
@@ -62,6 +62,10 @@ services:
             MEILI_NO_ANALYTICS: '${MEILISEARCH_NO_ANALYTICS:-false}'
         volumes:
             - 'sail-meilisearch:/meili_data'
+        labels:
+            - "traefik.enable=true"
+            - "traefik.http.routers.meilisearch.rule=Host(`meilisearch.ecommerce.localhost`)"
+            - 'traefik.http.services.meilisearch.loadbalancer.server.port=7700'
         networks:
             - sail
             - proxy
