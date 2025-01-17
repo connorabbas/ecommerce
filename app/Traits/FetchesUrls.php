@@ -23,6 +23,7 @@ trait FetchesUrls
         return Url::whereElementType($type)
             ->whereDefault(true)
             ->whereSlug($slug)
-            ->with($eagerLoad)->first();
+            ->with($eagerLoad)
+            ->first();
     }
 }

@@ -11,18 +11,8 @@ class ProductController extends Controller
 {
     use FetchesUrls;
 
-    public function show(Product $product, string $slug)
+    public function show(Product $product)
     {
-        /* $product = $this->fetchUrl(
-            $slug,
-            (new Product)->getMorphClass(),
-            [
-                'element.media',
-                'element.variants.basePrices.currency',
-                'element.variants.basePrices.priceable',
-                'element.variants.values.option',
-            ]
-        ); */
         return view('pages.products.show', [
             'product' => $product
         ]);

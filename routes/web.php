@@ -18,5 +18,5 @@ Route::get('/account', function () {
 
 Route::prefix('/p')->name('products.')->group(function () {
     Route::get('/search', action: [ProductSearchController::class, 'index'])->name('search');
-    Route::get('/{product}/{slug}', action: [ProductController::class, 'show'])->name('show');
+    Route::get('/{product}', action: [ProductController::class, 'show'])->name('show');
 });
