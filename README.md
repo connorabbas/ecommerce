@@ -67,4 +67,12 @@ Example/testing e-commerce application using [Laravel Scout](https://laravel.com
 
 ### Services
 Laravel application: http://ecommerce.localhost/
+Lunar backend application: http://ecommerce.localhost/lunar
 Meilisearch dashboard: http://meilisearch.ecommerce.localhost/
+
+### Development Resources
+https://github.com/lunarphp/livewire-starter-kit/tree/main
+https://github.com/meilisearch/saas-demo
+https://www.meilisearch.com/docs/guides/back_end/laravel_scout
+https://docs.lunarphp.io/admin/extending/overview.html
+https://htmx.org/examples/animations/#swapping 
