@@ -1,6 +1,6 @@
 <div id="search-filters-container">
     <div
-        class="accordion"
+        class="accordion shadow-sm"
         id="accordionExample"
     >
         <div class="accordion-item">

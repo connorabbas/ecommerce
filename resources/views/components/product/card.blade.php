@@ -1,4 +1,4 @@
-<div class="card flex-fill">
+<div class="card flex-fill shadow-sm">
     <img
         class="card-img-top"
         src="{{ $product->thumbnail }}"

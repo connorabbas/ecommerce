@@ -18,7 +18,6 @@ class MeilisearchEngine implements SearchEngine
             $ids = implode(', ', $filters->categoryIds);
             $filterString = "categories IN [{$ids}]";
         }
-        //dd('here');
 
         $productsSearchQuery = Product::search(
             $filters->searchTerm ?? '',
@@ -69,13 +68,13 @@ class MeilisearchEngine implements SearchEngine
         $hits = collect($searchResults['hits'])->map(function ($product) {
             return SearchEngineProduct::fromMeilisearchIndexedProduct($product);
         });
-        $products = new LengthAwarePaginator(
+        $products = (new LengthAwarePaginator(
             $hits,
             $searchResults['nbHits'],
             $filters->perPage,
             $filters->currentPage,
             ['path' => request()->url()]
-        );
+        ))->withQueryString();
 
         return $products;
     }
