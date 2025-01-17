@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Lunar\Models\Country;
 use Lunar\Models\Currency;
@@ -10,7 +9,6 @@ use Lunar\Models\Price;
 use Lunar\Shipping\Models\ShippingMethod;
 use Lunar\Shipping\Models\ShippingRate;
 use Lunar\Shipping\Models\ShippingZone;
-use Lunar\Shipping\Models\ShippingZonePostcode;
 
 class ShippingSeeder extends Seeder
 {
@@ -47,7 +45,7 @@ class ShippingSeeder extends Seeder
         );
 
         Price::create([
-            'priceable_type' => (new ShippingRate)->getMorphClass(),
+            'priceable_type' => (new ShippingRate())->getMorphClass(),
             'priceable_id' => $ukShippingRate->id,
             'price' => 1000,
             'min_quantity' => 1,
@@ -56,7 +54,7 @@ class ShippingSeeder extends Seeder
 
         // Free shipping on £100 or over orders
         Price::create([
-            'priceable_type' => (new ShippingRate)->getMorphClass(),
+            'priceable_type' => (new ShippingRate())->getMorphClass(),
             'priceable_id' => $ukShippingRate->id,
             'price' => 0,
             'min_quantity' => 10000,
@@ -91,7 +89,7 @@ class ShippingSeeder extends Seeder
         );
 
         Price::create([
-            'priceable_type' => (new ShippingRate)->getMorphClass(),
+            'priceable_type' => (new ShippingRate())->getMorphClass(),
             'priceable_id' => $usShippingRate->id,
             'price' => 5000,
             'min_quantity' => 1,
@@ -149,7 +147,7 @@ class ShippingSeeder extends Seeder
         );
 
         Price::create([
-            'priceable_type' =>(new ShippingRate)->getMorphClass(),
+            'priceable_type' => (new ShippingRate())->getMorphClass(),
             'priceable_id' => $euroShippingRate->id,
             'price' => 2000,
             'min_quantity' => 1,

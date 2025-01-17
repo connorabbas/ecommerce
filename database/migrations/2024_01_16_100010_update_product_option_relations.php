@@ -4,8 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Lunar\Base\Migration;
 use Lunar\Facades\DB;
 
-return new class extends Migration
-{
+return new class () extends Migration {
     public function up(): void
     {
         $variantsTable = $this->prefix.'product_variants';

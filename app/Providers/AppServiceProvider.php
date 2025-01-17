@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
         Route::bind('product', function (string $value) {
             $url = $this->fetchUrl(
                 $value,
-                (new Product)->getMorphClass(),
+                (new Product())->getMorphClass(),
                 [
                     'element.media',
                     'element.variants.basePrices.currency',

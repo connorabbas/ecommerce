@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Product\ProductController;
-use App\Http\Controllers\Product\ProductSearchController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductSearchController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {

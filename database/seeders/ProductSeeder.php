@@ -20,7 +20,6 @@ use Lunar\Models\ProductOptionValue;
 use Lunar\Models\ProductType;
 use Lunar\Models\ProductVariant;
 use Lunar\Models\TaxClass;
-use App\Jobs\GenerateVariants;
 
 class ProductSeeder extends AbstractSeeder
 {
@@ -90,7 +89,7 @@ class ProductSeeder extends AbstractSeeder
                     Price::create([
                         'customer_group_id' => null,
                         'currency_id' => $currency->id,
-                        'priceable_type' => (new ProductVariant)->getMorphClass(),
+                        'priceable_type' => (new ProductVariant())->getMorphClass(),
                         'priceable_id' => $variant->id,
                         'price' => $product->price,
                         'min_quantity' => 1,
@@ -201,7 +200,7 @@ class ProductSeeder extends AbstractSeeder
                     Price::create([
                         'customer_group_id' => null,
                         'currency_id' => $currency->id,
-                        'priceable_type' => (new ProductVariant)->getMorphClass(),
+                        'priceable_type' => (new ProductVariant())->getMorphClass(),
                         'priceable_id' => $variant['variant_id'],
                         'price' => $variant['price'],
                         'min_quantity' => 1,
