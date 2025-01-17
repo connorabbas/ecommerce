@@ -2,10 +2,10 @@
     <img
         class="card-img-top"
         src="{{ $product->thumbnail->getUrl('medium') }}"
-        alt="{{ $product->translateAttribute('name') }}"
+        alt="{{ $product->record_title }}"
     >
     <div class="card-body">
-        <h5 class="card-title">{{ $product->translateAttribute('name') }}</h5>
+        <h5 class="card-title">{{ $product->record_title }}</h5>
         <p class="card-text">...</p>
         <a
             href="{{ route('products.show', ['product' => $product->defaultUrl->slug]) }}"

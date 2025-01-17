@@ -34,27 +34,32 @@
                         >
                     </a>
                 </div>
-                <div class="d-none d-md-flex flex-grow-1 px-3 px-lg-5">
+                <form
+                    action="{{ route('products.search') }}"
+                    class="d-none d-md-flex flex-grow-1 px-3 px-lg-5"
+                >
                     <div
                         class="input-group m-0"
                         id="desktop-search"
                     >
                         <input
+                            value="{{ request()->input('search_term', '') }}"
                             type="text"
+                            name="search_term"
                             class="form-control bg-light"
                             placeholder="Enter search term, model #, or SKU #"
                             aria-describedby="desktop-search-button"
                         >
                         <button
                             class="btn btn-primary"
-                            type="button"
+                            type="submit"
                             id="desktop-search-button"
                             title="Search"
                         >
                             <i class="bi bi-search"></i>
                         </button>
                     </div>
-                </div>
+                </form>
                 <div class="d-flex align-items-center">
                     <div class="dropdown me-3 d-none d-lg-inline">
                         <button

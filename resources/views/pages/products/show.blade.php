@@ -6,7 +6,7 @@
             class="breadcrumb-item active"
             aria-current="page"
         >
-            Product {{ $product->translateAttribute('name') }}
+            Product {{ $product->record_title }}
         </li>
     </x-slot>
 
@@ -15,8 +15,16 @@
         id="product-results-container"
     >
         <div class="row">
-            <div class="col">
-                <h1>{{ $product->translateAttribute('name') }}</h1>
+            <div class="col-lg-7">
+                <img
+                    class="card-img-top"
+                    src="{{ $product->thumbnail->getUrl('large') }}"
+                    alt="{{ $product->record_title }}"
+                >
+            </div>
+            <div class="col-lg-4">
+                <h1>{{ $product->record_title }}</h1>
+                <p class="text-muted">{{ $product->translateAttribute('description') }}</p>
             </div>
         </div>
     </div>
