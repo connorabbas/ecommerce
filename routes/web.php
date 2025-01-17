@@ -16,7 +16,7 @@ Route::get('/account', function () {
     return view('pages.user-account.index');
 });
 
-Route::prefix('/p')->name('products.')->group(function () {
+Route::prefix('/products')->name('products.')->group(function () {
     Route::get('/search', action: [ProductSearchController::class, 'index'])->name('search');
     Route::get('/{product}', action: [ProductController::class, 'show'])->name('show');
 });

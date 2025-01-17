@@ -9,13 +9,18 @@ class Product extends LunarProduct
 {
     public function makeSearchableUsing(Collection $models): Collection
     {
-        return $models->load(['collections', 'brand', 'productType', 'thumbnail', 'variants']);
+        return $models->load(['collections', 'brand', 'productType', 'thumbnail', 'urls']);
     }
+
+    // TODO: name index based on env
+    // https://laravel.com/docs/11.x/scout#configuring-model-indexes
 
     public function toSearchableArray(): array
     {
         $data = array_merge([
             'id' => (string) $this->id,
+            'title' => $this->record_title,
+            'slug' => $this->defaultUrl->slug,
             'status' => $this->status,
             'product_type' => $this->productType->name,
             'brand_id' => $this->brand?->id,

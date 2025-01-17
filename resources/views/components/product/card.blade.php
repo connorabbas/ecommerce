@@ -1,17 +1,21 @@
 <div class="card flex-fill">
     <img
         class="card-img-top"
-        src="{{ $product->thumbnail->getUrl('medium') }}"
-        alt="{{ $product->record_title }}"
+        src="{{ $product->thumbnail }}"
+        alt="{{ $product->title }} Thumbnail"
     >
-    <div class="card-body">
-        <h5 class="card-title">{{ $product->record_title }}</h5>
-        <p class="card-text">...</p>
-        <a
-            href="{{ route('products.show', ['product' => $product->defaultUrl->slug]) }}"
-            class="btn btn-primary"
-        >
-            View
-        </a>
+    <div class="card-body d-flex flex-column gap-3">
+        <div class="flex-fill">
+            <h5 class="card-title">{{ $product->title }}</h5>
+            <p class="card-text">...</p>
+        </div>
+        <div>
+            <a
+                href="{{ route('products.show', ['product' => $product->slug]) }}"
+                class="btn btn-primary w-100"
+            >
+                View <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
     </div>
 </div>

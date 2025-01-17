@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repositories\Contracts\SearchEngine;
+use App\Repositories\Implementations\MeilisearchEngine;
 use App\Traits\FetchesUrls;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         LunarPanel::register();
+        $this->app->bind(SearchEngine::class, MeilisearchEngine::class);
     }
 
     /**

@@ -1,18 +1,17 @@
 <?php
 
-namespace App\View\Components\Product;
+namespace App\View\Components;
 
-use App\DataTransferObjects\Entities\SearchEngineProduct;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Card extends Component
+class HTMXPaginator extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct(public SearchEngineProduct $product)
+    public function __construct(public string $target)
     {
         //
     }
@@ -22,8 +21,8 @@ class Card extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.product.card', [
-            'product' => $this->product
+        return view('components.htmx-paginator', [
+            'target' => $this->target,
         ]);
     }
 }
