@@ -30,48 +30,12 @@ class MeilisearchEngine implements SearchEngine
             }
         );
 
-        $productsSearchQuery = Product::query();
-
         $products = $productsSearchQuery
             ->paginate(perPage: $filters->perPage, page: $filters->currentPage)
             ->withQueryString()
             ->through(function ($product) {
-                // Log memory usage
-                \Log::debug('Memory before transform:', [
-                    'usage' => memory_get_usage(true) / 1024 / 1024 . 'MB',
-                    'peak' => memory_get_peak_usage(true) / 1024 / 1024 . 'MB'
-                ]);
-
-                try {
-                    // Log product data
-                    \Log::debug('Processing product:', [
-                        'id' => $product->id ?? null,
-                        'class' => get_class($product)
-                    ]);
-
-                    // Check if product is valid
-                    if (!$product instanceof Product) {
-                        throw new \Exception('Invalid product type: ' . get_class($product));
-                    }
-
-                    $result = SearchEngineProduct::fromLunarProduct($product);
-
-                    // Log successful transformation
-                    \Log::debug('Transform successful:', ['product_id' => $result->id]);
-
-                    return $result;
-                } catch (\Throwable $e) {
-                    \Log::error('Transform failed:', [
-                        'error' => $e->getMessage(),
-                        'trace' => $e->getTraceAsString(),
-                        'memory' => memory_get_usage(true) / 1024 / 1024 . 'MB'
-                    ]);
-                    throw $e;
-                }
+                return SearchEngineProduct::fromLunarProduct($product);
             });
-        //$products = SearchEngineProduct::collect($products);
-
-        dd('here');
 
         return $products;
     }
@@ -102,11 +66,9 @@ class MeilisearchEngine implements SearchEngine
             }
         )->raw();
 
-        //dd($searchResults);
         $hits = collect($searchResults['hits'])->map(function ($product) {
             return SearchEngineProduct::fromMeilisearchIndexedProduct($product);
         });
-
         $products = new LengthAwarePaginator(
             $hits,
             $searchResults['nbHits'],
@@ -114,8 +76,6 @@ class MeilisearchEngine implements SearchEngine
             $filters->currentPage,
             ['path' => request()->url()]
         );
-        //$products = SearchEngineProduct::collect($products);
-        //$products = $products->through(fn($product) => SearchEngineProduct::fromMeilisearchIndexedProduct($product));
 
         return $products;
     }
