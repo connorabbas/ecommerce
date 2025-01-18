@@ -51,7 +51,7 @@ class MeilisearchEngine implements SearchEngine
             $ids = implode(', ', $filters->categoryIds);
             $filterString = "categories IN [{$ids}]";
         }
-        \Log::info('Filter String: ' . $filterString);
+        //\Log::info('Filter String: ' . $filterString);
 
         $searchResults = Product::search(
             $filters->searchTerm ?? '',
