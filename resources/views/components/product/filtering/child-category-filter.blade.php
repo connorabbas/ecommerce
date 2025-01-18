@@ -9,7 +9,8 @@
                         value="{{ $child->id }}"
                         id="child-check-{{ $child->id }}"
                         name="categories[]"
-                        @checked(in_array($child->id, request()->input('categories', [])))
+                        {{-- TODO: Revisit checked later --}}
+                        {{-- @checked(in_array((string) $child->id, request()->input('categories', []))) --}}
                         hx-get="{{ route('categories.children', ['collection' => $child->id]) }}"
                         hx-target="#child-categories-{{ $child->id }}"
                         hx-trigger="change"

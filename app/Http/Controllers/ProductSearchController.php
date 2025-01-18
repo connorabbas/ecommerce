@@ -29,9 +29,9 @@ class ProductSearchController extends Controller
             return view('pages.products.partials.product-results', compact('products'));
         }
 
-        // TODO: abstract
+        // Get root collections
+        // TODO: ancestors/child tree based on request query params
         $collections = Collection::whereIsRoot()
-            ->with(['children'])
             ->orderBy('_lft')
             ->get();
 
