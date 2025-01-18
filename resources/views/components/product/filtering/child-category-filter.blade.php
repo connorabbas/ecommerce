@@ -5,7 +5,7 @@
                 <div class="form-check">
                     <input
                         class="form-check-input"
-                        type="radio"
+                        type="checkbox"
                         value="{{ $child->id }}"
                         id="child-check-{{ $child->id }}"
                         name="categories[]"
@@ -15,7 +15,7 @@
                         hx-target="#child-categories-{{ $child->id }}"
                         hx-trigger="change"
                         hx-push-url="false"
-                        hx-on::after-request="document.body.dispatchEvent(new Event('category-filtered'))"
+                        hx-on::after-request="document.body.dispatchEvent(new Event('htmx-filtered'))"
                     >
                     <label
                         class="form-check-label"

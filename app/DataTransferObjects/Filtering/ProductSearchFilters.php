@@ -25,7 +25,9 @@ class ProductSearchFilters extends Data
             'perPage' => $request->input('per_page', 20),
             'currentPage' => $request->input('page', 1),
             'searchTerm' => $request->input('search_term', ''),
-            'categoryIds' => $request->input('categories'),
+            'categoryIds' => is_array($request->input('categories', []))
+                ? $request->input('categories')
+                : [$request->input('categories')],
             'attributes' => $request->input('attributes'),
         ]);
     }
