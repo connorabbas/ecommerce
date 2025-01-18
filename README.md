@@ -83,6 +83,7 @@ Example/testing e-commerce application using [Laravel Scout](https://laravel.com
 
 10. Index search data
     ```
+    php artisan scout:sync-index-settings
     php artisan scout:flush "App\Models\Product"
     php artisan scout:import "App\Models\Product"
     ```
