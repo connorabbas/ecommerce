@@ -23,9 +23,9 @@
             >
                 <div class="accordion-body p-0">
                     <form
-                        id="category-filters"
+                        id="category-filters-form"
                         hx-get="{{ url()->current() }}"
-                        hx-trigger="change from:input"
+                        hx-trigger="change from:input[name='categories[]']"
                         hx-target="#product-results-container"
                         hx-push-url="true"
                         hx-include="[name='categories[]']"
@@ -43,6 +43,10 @@
                                                 id="collection-check-{{ $collection->id }}"
                                                 name="categories[]"
                                                 @checked(in_array($collection->id, request()->input('categories', [])))
+                                                hx-get="{{ route('categories.children', ['collection' => $collection->id]) }}"
+                                                hx-target="#child-categories-{{ $collection->id }}"
+                                                hx-trigger="change"
+                                                hx-push-url="false"
                                             >
                                             <label
                                                 class="form-check-label"
@@ -51,6 +55,7 @@
                                                 {{ $collection->translateAttribute('name') }}
                                             </label>
                                         </div>
+                                        <div id="child-categories-{{ $collection->id }}"></div>
                                     </li>
                                 @endforeach
                             </ul>

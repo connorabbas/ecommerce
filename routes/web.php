@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryChildrenController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductSearchController;
 use Illuminate\Support\Facades\Route;
@@ -22,3 +23,7 @@ Route::prefix('/products')->name('products.')->group(function () {
         ->middleware(['htmx-no-cache']);
     Route::get('/{product}', action: [ProductController::class, 'show'])->name('show');
 });
+
+Route::get('/categories/{collection}/children', CategoryChildrenController::class)
+    ->name('categories.children')
+    ->middleware(['htmx-no-cache']);
