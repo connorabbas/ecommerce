@@ -25,10 +25,10 @@
                     <form
                         id="category-filters-form"
                         hx-get="{{ url()->current() }}"
-                        hx-trigger="change from:input[name='categories[]']"
                         hx-target="#product-results-container"
                         hx-push-url="true"
                         hx-include="[name='categories[]']"
+                        hx-trigger="category-filtered from:body"
                         class="d-flex flex-column gap-3"
                     >
                         <div>
@@ -38,7 +38,7 @@
                                         <div class="form-check">
                                             <input
                                                 class="form-check-input"
-                                                type="checkbox"
+                                                type="radio"
                                                 value="{{ $collection->id }}"
                                                 id="collection-check-{{ $collection->id }}"
                                                 name="categories[]"
@@ -47,6 +47,7 @@
                                                 hx-target="#child-categories-{{ $collection->id }}"
                                                 hx-trigger="change"
                                                 hx-push-url="false"
+                                                hx-on::after-request="document.body.dispatchEvent(new Event('category-filtered'))"
                                             >
                                             <label
                                                 class="form-check-label"
