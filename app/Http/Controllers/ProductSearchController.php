@@ -21,6 +21,14 @@ class ProductSearchController extends Controller
             raw: true,
         );
 
+        // Check for HTMX request
+        if (
+            $request->header('hx-request')
+            && $request->header('hx-target') == 'product-results-container'
+        ) {
+            return view('pages.products.partials.product-results', compact('products'));
+        }
+
         // TODO: abstract
         $collections = Collection::whereIsRoot()
             ->with(['children'])

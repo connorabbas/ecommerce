@@ -18,7 +18,7 @@
                             hx-get="{{ $paginator->previousPageUrl() }}"
                             hx-target="{{ $target }}"
                             hx-swap="innerHTML"
-                            hx-push-url="false"
+                            hx-push-url="true"
                             rel="prev"
                         >
                             @lang('pagination.previous')
@@ -35,7 +35,7 @@
                             hx-get="{{ $paginator->nextPageUrl() }}"
                             hx-target="{{ $target }}"
                             hx-swap="innerHTML"
-                            hx-push-url="false"
+                            hx-push-url="true"
                             rel="next"
                         >
                             @lang('pagination.next')
@@ -87,7 +87,7 @@
                                 hx-get="{{ $paginator->previousPageUrl() }}"
                                 hx-target="{{ $target }}"
                                 hx-swap="innerHTML"
-                                hx-push-url="false"
+                                hx-push-url="true"
                                 rel="prev"
                                 aria-label="@lang('pagination.previous')"
                             >&lsaquo;</a>
@@ -122,7 +122,7 @@
                                             hx-get="{{ $url }}"
                                             hx-target="{{ $target }}"
                                             hx-swap="innerHTML"
-                                            hx-push-url="false"
+                                            hx-push-url="true"
                                         >
                                             {{ $page }}
                                         </a>
@@ -141,7 +141,7 @@
                                 hx-get="{{ $paginator->nextPageUrl() }}"
                                 hx-target="{{ $target }}"
                                 hx-swap="innerHTML"
-                                hx-push-url="false"
+                                hx-push-url="true"
                                 rel="next"
                                 aria-label="@lang('pagination.next')"
                             >&rsaquo;</a>

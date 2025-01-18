@@ -9,6 +9,11 @@
         name="viewport"
         content="width=device-width, initial-scale=1"
     >
+    {{-- HTMX config so back button after partial template reload doesn't break page --}}
+    <meta
+        name="htmx-config"
+        content='{"historyCacheSize": 0, "refreshOnHistoryMiss": true}'
+    >
 
     <meta
         name="csrf-token"
@@ -26,7 +31,7 @@
 
 {{-- bg-light --}}
 
-<body class="">
+<body>
     <div
         id="site-wrapper"
         class="d-flex flex-column"

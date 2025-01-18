@@ -8,6 +8,7 @@
 <div
     id="pagination-links"
     hx-boost="true"
+    hx-target="#product-results-container"
 >
     {{ $products->links() }}
 </div>
