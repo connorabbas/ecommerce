@@ -39,12 +39,13 @@ class MeilisearchEngine implements SearchEngine
         return $products;
     }
 
+    /**
+     * Search Products Raw from the Meilisearch client
+     * https://www.meilisearch.com/docs/learn/filtering_and_sorting/filter_search_results#use-filter-when-searching
+     * https://www.meilisearch.com/docs/learn/filtering_and_sorting/filter_expression_reference
+     */
     public function searchProductsRaw(ProductSearchFilters $filters): Collection|LengthAwarePaginator
     {
-        // Search products
-        // https://www.meilisearch.com/docs/learn/filtering_and_sorting/filter_search_results#use-filter-when-searching
-        // https://www.meilisearch.com/docs/learn/filtering_and_sorting/filter_expression_reference
-
         $filterString = '';
         if (is_array($filters->categoryIds) && !empty($filters->categoryIds)) {
             $ids = implode(', ', $filters->categoryIds);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\DataTransferObjects\Filtering\ProductSearchFilters;
 use App\Services\SearchService;
 use Illuminate\Http\Request;
+use Lunar\Models\Collection;
 
 class ProductSearchController extends Controller
 {
@@ -20,8 +21,15 @@ class ProductSearchController extends Controller
             raw: true,
         );
 
+        // TODO: abstract
+        $collections = Collection::whereIsRoot()
+            ->with(['children'])
+            ->orderBy('_lft')
+            ->get();
+
         return view('pages.products.index', [
-            'products' => $products
+            'products' => $products,
+            'collections' => $collections,
         ]);
     }
 }
