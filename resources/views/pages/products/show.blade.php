@@ -10,10 +10,7 @@
         </li>
     </x-slot:breadcrumbs>
 
-    <div
-        class="container"
-        id="product-results-container"
-    >
+    <div class="container">
         <div class="row">
             <div class="col-lg-7">
                 <img

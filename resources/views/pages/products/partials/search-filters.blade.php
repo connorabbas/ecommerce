@@ -9,80 +9,57 @@
                     class="accordion-button"
                     type="button"
                     data-bs-toggle="collapse"
-                    data-bs-target="#collapseOne"
+                    data-bs-target="#categoryFilters"
                     aria-expanded="true"
-                    aria-controls="collapseOne"
+                    aria-controls="categoryFilters"
                 >
-                    Accordion Item #1
+                    Categories
                 </button>
             </h2>
             <div
-                id="collapseOne"
+                id="categoryFilters"
                 class="accordion-collapse collapse show"
                 data-bs-parent="#accordionExample"
             >
                 <div class="accordion-body">
-                    <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse
-                    plugin adds the appropriate classes that we use to style each element. These classes control the
-                    overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of
-                    this with custom CSS or overriding our default variables. It's also worth noting that just about any
-                    HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                </div>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <h2 class="accordion-header">
-                <button
-                    class="accordion-button collapsed"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseTwo"
-                    aria-expanded="false"
-                    aria-controls="collapseTwo"
-                >
-                    Accordion Item #2
-                </button>
-            </h2>
-            <div
-                id="collapseTwo"
-                class="accordion-collapse collapse"
-                data-bs-parent="#accordionExample"
-            >
-                <div class="accordion-body">
-                    <strong>This is the second item's accordion body.</strong> It is hidden by default, until the
-                    collapse plugin adds the appropriate classes that we use to style each element. These classes
-                    control the overall appearance, as well as the showing and hiding via CSS transitions. You can
-                    modify any of this with custom CSS or overriding our default variables. It's also worth noting that
-                    just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit
-                    overflow.
-                </div>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <h2 class="accordion-header">
-                <button
-                    class="accordion-button collapsed"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseThree"
-                    aria-expanded="false"
-                    aria-controls="collapseThree"
-                >
-                    Accordion Item #3
-                </button>
-            </h2>
-            <div
-                id="collapseThree"
-                class="accordion-collapse collapse"
-                data-bs-parent="#accordionExample"
-            >
-                <div class="accordion-body">
-                    <strong>This is the third item's accordion body.</strong> It is hidden by default, until the
-                    collapse plugin adds the appropriate classes that we use to style each element. These classes
-                    control the overall appearance, as well as the showing and hiding via CSS transitions. You can
-                    modify any of this with custom CSS or overriding our default variables. It's also worth noting that
-                    just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit
-                    overflow.
+                    <form
+                        id="category-filters"
+                        hx-get="{{ url()->current() }}"
+                        hx-trigger="change from:input"
+                        hx-target="#product-results-container"
+                        hx-push-url="true"
+                        hx-include="[name='categories[]']"
+                        class="d-flex flex-column gap-3"
+                    >
+                        <div>
+                            @foreach ($collections as $collection)
+                                <div class="form-check">
+                                    <input
+                                        class="form-check-input"
+                                        type="checkbox"
+                                        value="{{ $collection->id }}"
+                                        id="collection-check-{{ $collection->id }}"
+                                        name="categories[]"
+                                        @checked(in_array($collection->id, request()->input('categories', [])))
+                                    >
+                                    <label
+                                        class="form-check-label"
+                                        for="collection-check-{{ $collection->id }}"
+                                    >
+                                        {{ $collection->translateAttribute('name') }}
+                                    </label>
+                                </div>
+                            @endforeach
+                        </div>
+                        <noscript>
+                            <button
+                                class="btn btn-primary"
+                                type="submit"
+                            >
+                                Search
+                            </button>
+                        </noscript>
+                    </form>
                 </div>
             </div>
         </div>
