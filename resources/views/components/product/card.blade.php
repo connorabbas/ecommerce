@@ -9,7 +9,7 @@
             <h5 class="card-title">{{ $product->title }}</h5>
             <p class="card-text">...</p>
         </div>
-        <div hx-boost="true">
+        <div>
             <a
                 href="{{ route('products.show', ['product' => $product->slug]) }}"
                 class="btn btn-primary w-100"

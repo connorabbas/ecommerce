@@ -9,7 +9,6 @@
         name="viewport"
         content="width=device-width, initial-scale=1"
     >
-    {{-- HTMX config so back button after partial template reload doesn't break page --}}
     <meta
         name="htmx-config"
         content='{"historyCacheSize": 0, "refreshOnHistoryMiss": true}'
@@ -26,7 +25,7 @@
     @vite(['resources/assets/styles/app.scss', 'resources/assets/js/app.js'])
 
     {{-- Scripts loaded on the fly --}}
-    @stack('head')
+    {{ $head ?? '' }}
 </head>
 
 {{-- bg-light --}}

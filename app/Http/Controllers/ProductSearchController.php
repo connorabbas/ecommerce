@@ -21,7 +21,7 @@ class ProductSearchController extends Controller
             raw: true,
         );
 
-        // Check for HTMX request
+        // Check for HTMX request and return partial view
         if (
             $request->header('hx-request')
             && $request->header('hx-target') == 'product-results-container'

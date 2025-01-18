@@ -19,6 +19,8 @@ window.onscroll = function () {
 // Get the 'scrollToTop' button and attach a click event listener
 document.getElementById("scrollToTop").addEventListener("click", function () {
     // Scroll to the top of the document
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+    });
 });

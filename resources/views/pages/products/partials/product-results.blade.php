@@ -12,3 +12,7 @@
 >
     {{ $products->links() }}
 </div>
+{{-- Alternatively if more control is needed at the link --}}
+{{--<div id="pagination-links">
+    {{ $products->links('components.htmx-paginator', ['target' => '#product-results-container']) }}
+</div> --}}

@@ -17,6 +17,8 @@ Route::get('/account', function () {
 });
 
 Route::prefix('/products')->name('products.')->group(function () {
-    Route::get('/search', action: [ProductSearchController::class, 'index'])->name('search');
+    Route::get('/search', action: [ProductSearchController::class, 'index'])
+        ->name('search')
+        ->middleware(['htmx-no-cache']);
     Route::get('/{product}', action: [ProductController::class, 'show'])->name('show');
 });

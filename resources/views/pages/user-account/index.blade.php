@@ -1,5 +1,5 @@
 <x-layout.site.app>
-    <x-slot name="breadcrumbs">
+    <x-slot:breadcrumbs>
         <li class="breadcrumb-item"><a href="/">Home</a></li>
         <li
             class="breadcrumb-item active"
