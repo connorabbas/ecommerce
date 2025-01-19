@@ -81,11 +81,9 @@ Example/testing e-commerce application using [Laravel Scout](https://laravel.com
     php artisan storage:link
     ```
 
-10. Index search data
+10. Sync Meilisearch data (index models, sync settings)
     ```
-    php artisan scout:sync-index-settings
-    php artisan scout:flush "App\Models\Product"
-    php artisan scout:import "App\Models\Product"
+    meilisearch:sync
     ```
 
 ### Services
@@ -102,3 +100,4 @@ https://www.meilisearch.com/docs/guides/back_end/laravel_scout
 https://www.meilisearch.com/blog/laravel-full-text-search
 https://docs.lunarphp.io/admin/extending/overview.html
 https://htmx.org/examples/animations/#swapping
+https://instantsearchjs.netlify.app/examples/js/e-commerce/search/

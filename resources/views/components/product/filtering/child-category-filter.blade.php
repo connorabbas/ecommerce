@@ -5,7 +5,7 @@
                 <div class="form-check">
                     <input
                         class="form-check-input"
-                        type="checkbox"
+                        type="radio"
                         value="{{ $child->id }}"
                         id="child-check-{{ $child->id }}"
                         name="categories[]"

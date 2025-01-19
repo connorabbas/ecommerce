@@ -38,7 +38,7 @@
                                             <div class="form-check">
                                                 <input
                                                     class="form-check-input"
-                                                    type="checkbox"
+                                                    type="radio"
                                                     value="{{ $collection->id }}"
                                                     id="collection-check-{{ $collection->id }}"
                                                     name="categories[]"
