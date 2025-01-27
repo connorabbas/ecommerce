@@ -20,8 +20,48 @@
                 >
             </div>
             <div class="col-lg-4">
-                <h1>{{ $product->record_title }}</h1>
-                <p class="text-muted">{{ $product->translateAttribute('description') }}</p>
+                <div>
+                    <h1>{{ $product->record_title }}</h1>
+                    <p class="text-muted">{{ $product->translateAttribute('description') }}</p>
+                </div>
+                <div>
+                    <form
+                        id="add-to-cart-form"
+                        method="POST"
+                        action="{{ route('cart.item.store') }}"
+                    >
+                        @csrf
+                        {{-- TODO: variants --}}
+                        <input
+                            type="hidden"
+                            name="sku"
+                            value="{{ $product?->variants ? $product->variants[0]->sku : $product->sku }}"
+                        >
+                        <input
+                            type="hidden"
+                            name="qty"
+                            value="1"
+                        >
+                        {{-- No JS Fallback --}}
+                        <noscript>
+                            <button
+                                class="btn btn-primary"
+                                type="submit"
+                            >
+                                <i class="bi bi-cart-plus me-1"></i> Add to Cart
+                            </button>
+                        </noscript>
+                    </form>
+                    <button
+                        class="btn btn-primary"
+                        hx-post="{{ route('cart.item.store') }}"
+                        hx-include="#add-to-cart-form"
+                        hx-target="#cart-link"
+                        hx-swap="innerHtml"
+                    >
+                        <i class="bi bi-cart-plus me-1"></i> Add to Cart
+                    </button>
+                </div>
             </div>
         </div>
     </div>
