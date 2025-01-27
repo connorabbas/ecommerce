@@ -59,7 +59,7 @@ Example/testing e-commerce application using [Laravel Scout](https://laravel.com
     php artisan key:generate
     ```
 
-7. Setup Lunar admin
+7. Setup Lunar admin (don't overwrite config)
 
     ```
     php artisan lunar:install
@@ -83,21 +83,29 @@ Example/testing e-commerce application using [Laravel Scout](https://laravel.com
 
 10. Sync Meilisearch data (index models, sync settings)
     ```
-    meilisearch:sync
+    php artisan meilisearch:sync
     ```
 
 ### Services
 
 Laravel application: http://ecommerce.localhost/
+
 Lunar backend application: http://ecommerce.localhost/lunar
+
 Meilisearch dashboard: http://meilisearch.ecommerce.localhost/
 
 ### Development Resources
 
 https://github.com/lunarphp/livewire-starter-kit/tree/main
+
 https://github.com/meilisearch/saas-demo
+
 https://www.meilisearch.com/docs/guides/back_end/laravel_scout
+
 https://www.meilisearch.com/blog/laravel-full-text-search
+
 https://docs.lunarphp.io/admin/extending/overview.html
+
 https://htmx.org/examples/animations/#swapping
+
 https://instantsearchjs.netlify.app/examples/js/e-commerce/search/
